@@ -1,0 +1,82 @@
+{% extends 'student_header.html'%}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tutor-Town</title>
+    <!-- <script type="text/javascript">
+    	if(window.history.replaceState){
+    		window.history.replaceState(null,null,window.location.href);
+    	}
+    </script> -->
+</head>
+<body>
+    <div class="content-body">
+        <!-- row -->
+        <div class="container-fluid">
+        
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title" style="font-size:40px">MY BATCH LIST REPORT </h4>
+                        </div>
+                        <form method="post" action="{% url 'student_batch_report' %}">
+                            {% csrf_token %}
+                            <select name="filter_name">
+                                <option><---Select Filter---></option>
+                                    <option value="bnum">All</option>
+                                <option value="bnum">Btach Number</option>
+                                <option value="btime">Batch Time</option>
+                                <option value="fname">Tutor Name</option>
+                                <option value="bsubject">Subject</option>
+                            </select>
+                            <input type="text" id="search" name="search">
+                           
+                            <input type="submit" name="action" value="search">
+                            
+                             <input type="submit" name="action" value="export"/>
+
+                        </form>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-sm mb-0 table-striped">
+                                    <thead >
+                                        <tr>
+                                            <th class="px-5 py-3" style="font-size: 15px;">STUDENT NAME</th>
+                                            <th class="py-3" style="font-size: 15px;">TUTOR NAME</th>
+                                            <th class="py-3" style="font-size: 15px;">BATCH NO.</th>
+                                            <th class="py-3" style="font-size: 15px;">BATCH TIME</th>
+                                            <!-- <th class="py-3" style="font-size: 15px;">Batch Time</th>
+                                            <th class="py-3" style="font-size: 15px;">Action</th> -->
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for i in add_student_batch %}
+                                        <tr>
+                                            
+                                            <td class="px-5 py-3" style="font-size: 15px;">{{i.student.fname}}</td>
+                                            <td class="py-3" style="font-size: 15px;">{{i.tutor.fname}} {{i.tutor.lname}}</td>
+                                            <td class="py-3" style="font-size: 15px;">{{i.bnum}}</td>
+                                            <td class="py-3" style="font-size: 15px;">{{i.btime}}</td>
+                                        </tr>
+                                        {% endfor %}
+                                        
+                                    </tbody>
+
+                                    <!--  -->
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+               
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+{% endblock %}

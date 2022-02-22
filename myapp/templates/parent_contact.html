@@ -1,0 +1,130 @@
+{% extends 'parent_header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+
+<html lang="en" class="h-100">    
+
+
+<!-- Mirrored from edumin.dexignlab.com/xhtml/page-register.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 10 Feb 2021 07:02:42 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Edumin - Bootstrap Admin Dashboard </title>
+    <!-- Favicon icon -->
+    <!-- <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/favicon.png' %}"> -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+<script type="text/javascript">
+    function checkEmail()
+    {
+        
+        var f=document.contact.email.value;
+        var reg=/^[A-Za-z0-9-_.]+@[A-Za-z]+\.[A-Za-z]{2,4}$/;
+        if(f=="")
+        {
+            document.getElementById("email").innerHTML="Please Enter Stadndard Email";
+            document.getElementById("btn").disabled="true";
+
+        }
+        else if(!reg.test(f))
+        {
+            document.getElementById("email").innerHTML="Please Enter Stadndard Email";
+            document.getElementById("btn").disabled="true";
+        }
+        else
+        {
+            document.getElementById("email").innerHTML="";
+            document.getElementById("btn").disabled=""; 
+        }
+    }
+    function checkMobile()
+    {
+        var f=document.contact.mobile.value;
+        var reg=/^\d{10}$/;
+        if(f=="")
+        {
+            document.getElementById("mobile").innerHTML="Please Enter Mobile";
+            document.getElementById("btn").disabled="true";
+        }
+        else if(!reg.test(f))
+        {
+            document.getElementById("mobile").innerHTML="Please Enter 10 Digit Only";
+            document.getElementById("btn").disabled="true";
+        }
+        else
+        {
+            document.getElementById("mobile").innerHTML="";
+            document.getElementById("btn").disabled=""; 
+        }
+    }
+    </script>
+</head>
+<style >
+   .lft{
+    margin-left: 100px;
+   }    
+</style>
+<body class="h-100" style="background-image:url({% static 'images/book2.jpg' %}); background-repate:no-repeat; background-size:cover;" >
+    <div class="authincation h-100" style="margin-top: 25px">
+        <div class="container h-100">
+            <div class="row justify-content-center h-100 ">
+                <div class="col-md-6">
+                    <div class="authincation-content" style="opacity:0.8 ;margin-left: -80px;margin-right: -89px;background: #fff;border-radius: 5px;margin-top: 143px;">
+                        <div class="row no-gutters">
+                            <div class="col-xl-12">
+                                <div class="auth-form">
+                                    <center><h2 class=" mb-4">Contact</h2></center>
+                                    {{msg}}
+                                    <form name="contact" method="post" action="{% url 'parent_contact' %}" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <label><strong>Name</strong> </label>
+                                            <input type="text" class="lft" placeholder=" First Name" value="{{parent.fname}}" name="name" required="true">
+                                       
+                                        </div>
+                                        <div class="form-group">
+                                            <label><strong>Email</strong></label>
+                                            <input type="email" style="margin-left: 105px;" placeholder="hello@example.com" name="email" value="{{parent.email}}" required="true" onblur="checkEmail();">
+                                            <span id="email"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <label><strong>Mobile Number</strong></label>
+                                            <input type="text" style="margin-left: 40px;" placeholder="Enter Mobile Number" name="mobile" value="{{parent.mobile}}"required="true" onblur="checkMobile();">
+                                            <span id="mobile"></span>
+                                        </div>                                     
+                                        <div class="form-group">
+                                            <label><strong>Feedback</strong></label>
+                                            <textarea rows="5" cols="22"  name="feedback" placeholder="Your Feedback" style="margin-left: 78px;"></textarea>
+                                            
+                                        </div>
+                                        <div class="   mt-4" >
+                                            <button type="submit"  class="btn btn-primary " style="width: 150px; background-color: #044d1a; border-radius: 45px 42px; margin-left: 100px;">Submit</button>
+                                        </div>
+                                    </form>
+                                    <div class="new-account mt-3">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <!-- Required vendors -->
+<!--     <script src="{% static 'vendor/global/global.min.js' %}"></script>
+  <script src="{% static 'vendor/bootstrap-select/dist/js/bootstrap-select.min.js' %}"></script>
+    <script src="{% static 'js/dlabnav-init.js' %}"></script> -->
+    <!--endRemoveIf(production)-->
+</body>
+
+
+<!-- Mirrored from edumin.dexignlab.com/xhtml/page-register.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 10 Feb 2021 07:02:42 GMT -->
+</html>
+
+{% endblock %}

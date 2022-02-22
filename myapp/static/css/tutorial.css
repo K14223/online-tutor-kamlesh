@@ -1,0 +1,65 @@
+
+.container-section .service-main .mainbox {
+width: 100%;
+display: flex;
+flex-wrap: wrap;
+}
+
+.container-section .service-main .mainbox .box1 {
+width: 30%;
+margin: 10px auto;
+border-radius: 15px;
+background-color: aliceblue;
+}
+.service-main .mainbox .box1:hover{ 
+/* background-image: -webkit-linear-gradient(0deg, #766dff9e 0%, #88f3ff7a 100%); */
+background-color: rgba(0, 0, 0, 0.644);
+}
+.service-main .mainbox .box1:hover img,.box1:hover .img2,.box1:hover .img3,.box1:hover .img4{
+transform: scale(1.1);
+transition-duration: 2s;
+
+}
+.service-main h3{
+text-align: center;
+}
+.service-main .mainbox .box1 img {
+width: 45%;
+height: 150px;
+display: block;
+margin: 13px auto;
+}
+
+.service-main .mainbox .box1 .img2 {
+width: 50%;
+height: 150px;
+display: block;
+margin: 19px 86px;
+}
+
+.service-main .mainbox .box1 .img3 {
+width: 60%;
+height: 150px;
+display: block; 
+margin: 19px 56px;
+}
+
+.service-main .mainbox .box1 .img4 {
+width: 70%;
+margin: 21px auto;
+display: block;
+}
+
+.service-main .mainbox .box1 h5 {
+font-size: 24px;
+text-align: center;
+font-family: monospace;
+}
+
+.service-main .mainbox .box2 img, .box3 img {
+width: 50%;
+height: 50%;
+margin: 13px 67px;
+}
+
+

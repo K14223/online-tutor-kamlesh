@@ -1,0 +1,86 @@
+{% extends 'parent_header.html'%}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tutor-Town</title>
+    <!-- <script type="text/javascript">
+    	if(window.history.replaceState){
+    		window.history.replaceState(null,null,window.location.href);
+    	}
+    </script> -->
+</head>
+<body>
+    <div class="content-body">
+        <!-- row -->
+        <div class="container-fluid">
+        
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title" style="font-size:40px">ALL TUTOR REPORT </h4>
+                        </div>
+                        <form method="post" action="{% url 'parent_all_tutor_report' %}">
+                            {% csrf_token %}
+                            <select name="filter_name">
+                                <option><---Select Filter---></option>
+                                    <option value="fname">All</option>
+                                <option value="fname">Fname</option>
+                                <option value="datetime">Date</option>
+                                <option value="btime">Batch Time</option>
+                                <option value="bnum">Batch NO.</option>
+                                <option value="astatus">Absent</option>
+                                <option value="astatus">Present</option>
+                            </select>
+                            <input type="text" id="search" name="search">
+                           
+                            <input type="submit" name="action" value="search">
+                            
+                             <input type="submit" name="action" value="export"/>
+
+                        </form>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-sm mb-0 table-striped">
+                                    <thead >
+                                        <tr>
+                                            <th class="px-5 py-3" style="font-size: 15px;">TUTOR ID</th>
+                                            <th class="py-3" style="font-size: 15px;">TUTOR NAME</th>
+                                            <th class="py-3" style="font-size: 15px;">MOBILE NO.</th>
+                                            <th class="py-3" style="font-size: 15px;">EMAIL</th>
+                                            <th class="py-3" style="font-size: 15px;">SUBJECT</th>
+                                            <th class="py-3" style="font-size: 15px;">ADDRESS</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for i in tutors %}
+                                        <tr>
+                                            
+                                            <td class="px-5 py-3" style="font-size: 15px;">{{i.tutor.pk}}</td>
+                                            <td class="py-3" style="font-size: 15px;">{{i.tutor.fname}} {{i.tutor.lname}}</td>
+                                            <td class="py-3" style="font-size: 15px;">{{i.tutor.mobile}}</td>
+                                            <td class="py-3" style="font-size: 15px;">{{i.tutor.email}}</td>
+                                            <td class="py-3" style="font-size: 15px;">{{i.subject_details}}</td>
+                                            <td class="py-3" style="font-size: 15px;">{{i.address}}</td>
+                                        </tr>
+                                        {% endfor %}
+                                        
+                                    </tbody>
+
+                                    <!--  -->
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+               
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+{% endblock %}

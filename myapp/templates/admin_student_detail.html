@@ -1,0 +1,74 @@
+{% extends 'admin_header.html' %}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+        tbody tr td{
+            text-align: left !important;
+        }
+        .card-title{
+           color: black !important;
+            line-height: 40px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+	<table style="margin-left: 300px;margin-top: 41px;">
+        <tr>
+            <td>
+                <div class="card" style="width:500px; height:500px;">
+					<img class="card-img-top" src="{{parent.student.user_image.url}}" alt="Card image" width=500px height=500px>
+                </div>  
+            </td>
+            <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+            <td>
+                <div class="card-body" style="background-color: white;width:500px; height:450px; font-family: Arial, Helvetica, sans-serif; font-size: x-large;">
+                    <p class="card-title">Student Name :{{parent.student.fname}} {{parent.student.lname}} </p>
+                    <p class="card-title">Student Email :{{parent.student.email}} </p>
+                    <p class="card-title">User Type  :{{parent.student.usertype}} </p>
+                    <p class="card-title">Contact  :{{parent.student.mobile}} </p>
+                    <p class="card-title">Parent Name :{{parent.fname}} {{parent.lname}}</p>
+                    <p class="card-title">Parent Contact  :{{parent.mobile}}</p>
+                    <p class="card-title">Parent Email  :{{parent.email}}</p>
+                    <p class="card-title">Tutor Name :{{parent.tutor.fname}} {{parent.tutor.lname}}</p>
+                    <p class="card-title">Tutor Contact :{{parent.tutor.mobile}} </p>
+                </div>
+            </td>
+        </tr>
+    </table>
+
+
+
+
+
+
+
+
+	<!-- <div class="row">
+		
+		<div id="box" class="col-sm-3" style="margin-left: 300px;margin-top: 41px;">
+			<div class="container">
+				<div class="card" style="width:350px">
+					<img class="card-img-top" src="{{tutor_detail.tutor.user_image.url}}" alt="Card image" width=200px height=250px>
+					<div class="card-body">
+						<p class="card-title">Class Name :{{tutor_detail.cname}} </p>
+						<p class="card-title">Tutor Name  :{{tutor_detail.tname}} </p>
+						<p class="card-title">Subject  :{{tutor_detail.subject_details}} </p>
+						<p class="card-title">Contact  :{{tutor_detail.tutor.mobile}} </p>
+						<p class="card-title">Email Id :{{tutor_detail.tutor.email}} </p>
+						<p class="card-title">Qualifictaion Details  :{{tutor_detail.Qualification_details}} </p>
+						<p class="card-title">Experience :{{tutor_detail.extra_details}} </p>
+						
+                    </div>
+				</div>
+			</div>
+		</div>
+		
+	</div> -->
+</body>
+</html>
+{% endblock %}

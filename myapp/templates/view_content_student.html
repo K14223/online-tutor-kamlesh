@@ -1,0 +1,67 @@
+{% extends 'student_header.html'%}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tutor-Town</title>
+    <!-- <script type="text/javascript">
+    	if(window.history.replaceState){
+    		window.history.replaceState(null,null,window.location.href);
+    	}
+    </script> -->
+</head>
+<body>
+    <div class="content-body">
+        <!-- row -->
+        <div class="container-fluid">
+        
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title" style="font-size:40px">Content List </h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-sm mb-0 table-striped">
+                                    <thead >
+                                        <tr>
+                                            <th class="px-5 py-3" style="font-size: 15px;">Tutor Name</th>
+                                            <th class="py-3" style="font-size: 15px;">Batch Number</th>
+                                            <th class="py-3" style="font-size: 15px;">Subject</th>
+                                            <th class="py-3" style="font-size: 15px;">Document</th>
+                                            <th class="py-3" style="font-size: 15px;">Action</th>
+                                            <!-- <th class="py-3" style="font-size: 15px;">Date Of Admit</th>
+                                            <th class="py-3" style="font-size: 15px;">Edit</th>  -->
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for i in upload_by_tutor %}
+                                        <tr>
+                                            <td class="px-5 py-3" style="font-size: 15px;">{{i.tutor.fname}}</td>
+                                            <td class="py-3" style="font-size: 15px;">{{i.bnum}}</td>
+                                            <td class="py-3" style="font-size: 15px;">{{subject}}</td>
+                                            <td class="py-3" style="font-size: 15px;">{{i.filename}}</td>
+                                            <td class="py-3" style="font-size: 15px;"><a href="{{i.filename.url}}"><input type="button"  class="btn btn-primary " style=" background-color:  #095206fd; border-radius: 45px 42px; margin-left: 100px;" value="Download"></a></td>
+                                            <!-- <th class="py-3" style="font-size: 15px;">Date Of Admit</th>
+                                            <th class="py-3" style="font-size: 15px;">Edit</th>  -->
+                                        </tr>
+                                        {% endfor %}
+                                        
+                                    </tbody>
+
+                                    <!--  -->
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+               
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+{% endblock %}

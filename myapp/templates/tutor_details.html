@@ -1,0 +1,174 @@
+{% extends 'tutor_header.html'%}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<div class="content-body">
+            <!-- row -->
+            <div class="container-fluid">
+				    
+                <div class="row page-titles mx-0">
+                    <div class="col-sm-6 p-md-0">
+                        <div class="welcome-text">
+                            <h4>Tutor Details</h4>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index-2.html">Home</a></li>
+                            <li class="breadcrumb-item active"><a href="add-professor.html">Tutor details</a></li>
+                            
+                        </ol>
+                    </div>
+                </div>
+				
+				<div class="row">
+					<div class="col-xl-12 col-xxl-12 col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+								<h5 class="card-title">Basic Info</h5>
+							</div>
+							<div class="card-body">
+								{% if msg %}
+									{{msg}}
+								{% endif %}
+								{% if tutor_detail.tname %}
+                                <form name="tutor_details" method="post" action="{% url 'tutor_details' %}" enctype="multipart/form-data">
+									{% csrf_token %}
+									<div class="row">
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Tutor Name</label>
+												<input type="text" class="form-control" name="tname" value="{{tutor_detail.tname}}">
+											</div>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Class Name</label>
+												<input type="text" class="form-control" name="cname" value="{{tutor_detail.cname}}">
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Subject Details</label>
+												<textarea class="form-control" rows="2" name="subject_details">{{tutor_detail.subject_details}}</textarea>
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Qualification Details</label>
+												<textarea class="form-control" rows="2" name="qualification_details">{{tutor_detail.qualification_details}}</textarea>
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Address</label>
+												<textarea class="form-control" rows="2" name="address">{{tutor_detail.address}}</textarea>
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Extra details</label>
+												<textarea class="form-control" rows="2" name="extra_details">{{tutor_detail.extra_details}}</textarea>
+											</div>
+										</div>
+										<!-- <div class="col-lg-12 col-md-12 col-sm-12">
+											<div class="form-group fallback w-100">
+												<label class="form-label">Current Document</label>
+												<input type="Text" class="dropify" data-default-file="" name="identity_proof">
+											</div>
+										</div> -->
+										<div class="col-lg-12 col-md-12 col-sm-12">
+											<div class="form-group fallback w-100">
+												<label class="form-label">Currently Uploaded  Identity Proof</label>
+												<a href="{{tutor_detail.identity_proof.url}}" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{tutor_detail.identity_proof.url}}</a>
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12">
+											<div class="form-group fallback w-100">
+												<label class="form-label">Your Identity Proof</label>
+												<input type="file" class="dropify" data-default-file="" name="identity_proof">
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12">
+											<button type="submit" style="background-color: #2b1803; border-radius: 45px 42px;" class="btn btn-primary" name="submit" value="edit" >Submit</button>
+											<button type="submit" class="btn btn-light">Cancel</button>
+										</div>
+									</div>
+								</form>
+								{% else %}
+								<form name="tutor_details" method="post" action="{% url 'tutor_details' %}" enctype="multipart/form-data">
+									{% csrf_token %}
+									<div class="row">
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Tutor Name</label>
+												<input type="text" class="form-control" name="tname">
+											</div>
+										</div>
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Class Name</label>
+												<input type="text" class="form-control" name="cname">
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Subject Details</label>
+												<textarea class="form-control" rows="3" name="subject_details"></textarea>
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Qualification Details</label>
+												<textarea class="form-control" rows="3" name="qualification_details"></textarea>
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Address</label>
+												<textarea class="form-control" rows="3" name="address"></textarea>
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Extra details</label>
+												<textarea class="form-control" rows="3" name="extra_details"></textarea>
+											</div>
+										</div>
+										<!-- <div class="col-lg-12 col-md-12 col-sm-12">
+											<div class="form-group fallback w-100">
+												<label class="form-label">Current Document</label>
+												<input type="Text" class="dropify" data-default-file="" name="identity_proof">
+											</div>
+										</div> -->
+										<div class="col-lg-12 col-md-12 col-sm-12">
+											<div class="form-group fallback w-100">
+												<label class="form-label">Your Identity Proof</label>
+												<input type="file" class="dropify" data-default-file="" name="identity_proof">
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12">
+											<button type="submit" class="btn btn-primary" name="submit" value="submit" style="background-color: #2b1803; border-radius: 45px 42px; width: 150px">Save</button>
+											<button type="submit" class="btn btn-light">Cancel</button>
+										</div>
+									</div>
+								</form>
+								{% endif %}
+                            </div>
+                        </div>
+                    </div>
+				</div>
+            </div>
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,146 @@
+{% extends 'tutor_header.html'%}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<div class="content-body" >
+            <!-- row -->
+            <div class="container-fluid">
+				    
+                <div class="row page-titles mx-0">
+                    <div class="col-sm-6 p-md-0">
+                        <div class="welcome-text">
+                            <h4>Create Batch</h4>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="tutor_index.html">Home</a></li>
+                            <li class="breadcrumb-item"><a href="tutor_index.html">Batch</a></li>
+                            
+							<li class="breadcrumb-item active"><a href="add_batch.html">Add Batch</a></li>
+                            
+                        </ol>
+                    </div>
+                </div>
+				
+				<div class="row">
+					<div class="col-xl-12 col-xxl-12 col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+								<h5 class="card-title">Create Batch</h5>
+							</div>
+							<div class="card-body">
+                                <form name="add_batch" method="post" action="{% url 'add_batch' %}" enctype="multipart/form-data">
+									{% csrf_token %}
+									<div class="row">
+										<div class="col-xl-12 col-xxl-12 col-sm-12">
+											<div class="card">
+												<div class="card-header">
+													<h5 class="card-title">Batch Informations</h5>
+												</div>
+												<div class="card-body">
+													<form name="add_batch" method="post" action="{% url 'add_batch' %}" enctype="multipart/form-data">
+														{% csrf_token %}
+														<div class="row">																	
+															<div class="col-lg-4 col-md-12 col-sm-12">
+																<div class="form-group">
+																	<label class="form-label">Date</label>
+																	<input type="date" class="form-control" name="bdate">
+																
+																</div>
+															</div>
+															<div class="col-lg-4 col-md-12 col-sm-12">
+																<div class="form-group">
+																	<label class="form-label">Day</label>
+																	<input type="text" class="form-control" name="bday">
+																	
+																</div>
+															</div>
+															<div class="col-lg-4 col-md-12 col-sm-12">
+																<div class="form-group">
+																	<label class="form-label">Time</label>
+																	<input type="time" class="form-control" name="btime">
+																	
+																</div>
+																
+															</div>
+														</div>	
+														<div class="row">
+																<div class="col-lg-6 col-md-6 col-sm-12">
+																	<div class="form-group">
+																		<label class="form-label">Batch No.</label>
+																		<input type="number" class="form-control" name="bnum">
+																	</div>
+																</div>
+																<div class="col-lg-6 col-md-6 col-sm-12">
+																	<div class="form-group">
+																		<label class="form-label">Subject</label>
+																		<select name="bsubject" id="">
+																			{% for i in subjects %}
+																			<option value="{{i}}">{{i}}</option>
+																			{% endfor %}
+																		</select>
+																		<!-- <input type="text" class="form-control" name="bsubject"> -->
+																	</div>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-lg-12 col-md-12 col-sm-12">
+																	<div class="form-group">
+																		<label class="form-label">Batch Name</label>
+																		<input type="text" class="form-control" name="bname">
+																	</div>
+																</div>
+															</div>
+															
+															<!-- <div class="row">																
+																
+															</div>
+															
+															<div class="row">																
+																
+															</div> -->
+															<div class="row">																
+																<div class="col-lg-12 col-md-12 col-sm-12">
+																	<div class="form-group">
+																		<label class="form-label">Batch Detail</label>
+																		<textarea class="form-control" rows="3" name="bdetail"></textarea>
+																	</div>
+																</div>
+															</div>
+															
+															<!-- <div class="col-lg-12 col-md-12 col-sm-12">
+																<div class="form-group fallback w-100">
+																	<label class="form-label">Current Document</label>
+																	<input type="Text" class="dropify" data-default-file="" name="identity_proof">
+																</div>
+															</div> -->
+															<div class="col-lg-12 col-md-12 col-sm-12">
+																<button type="submit" class="btn btn-primary" name="create" value="create">Create</button>
+																<button type="submit" class="btn btn-light">Cancel</button>
+															</div>
+														</div>
+													</form>
+													
+												</div>
+											</div>
+										</div>
+									</div>
+                            </div>
+                        </div>
+                    </div>
+				</div>
+            </div>
+        </div>
+        <!--**********************************
+            Content body end
+        ***********************************-->
+
+</body>
+</html>
+{% endblock %}

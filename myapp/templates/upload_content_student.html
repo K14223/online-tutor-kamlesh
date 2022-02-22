@@ -1,0 +1,129 @@
+{% extends 'student_header.html'%}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<script>
+		if ( window.history.replaceState ) {
+		  window.history.replaceState( null, null, window.location.href );
+		}
+		</script>
+</head>
+<body>
+<div class="content-body" style="">
+    <!-- background-image:url({% static 'images/book2.jpg' %}); background-repate:no-repeat; background-size:cover; -->
+            <!-- row -->
+            <div class="container-fluid">
+				    
+                <div class="row page-titles mx-0">
+                    <div class="col-sm-6 p-md-0">
+                        <div class="welcome-text">
+                            <h4>Upload Content</h4>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Upload Content</a></li>
+                            
+                        </ol>
+                    </div>
+                </div>
+				
+				<div class="row">
+					<div class="col-xl-12 col-xxl-12 col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+								<h5 class="card-title">Basic Info</h5>
+							</div>
+							<div class="card-body">
+								{% if msg %}
+									{{msg}}
+								{% endif %}
+                                <form name="upload_content_student" method="post" action="{% url 'upload_content_student' %}" enctype="multipart/form-data">
+									{% csrf_token %}
+									<div class="row">
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Upload Content</label>
+												<input type="file" class="form-control" name="fname">
+											</div>
+											<div class="form-group">
+												<label class="form-label">Date</label>
+												<input type="date" class="form-control" name="date">
+											</div>
+                                            <div class="form-group">
+												<label class="form-label">Tutor Name</label>
+												<select name="tid">
+													<option><---Select Tutor---></option>
+                                                    {% for i in attendance %}
+                                                    <option value="{{i.tutor.id}}">{{i.tutor.fname}}</option>
+                                                    {% endfor %}
+                                                </select>											</div>
+                                            <div class="form-group">
+												<label class="form-label">Student Name</label>
+												<input type="text" class="form-control" name="sname" value="{{request.session.fname}}">
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12">
+											<button type="submit" class="btn btn-primary" name="submit" value="edit">Uplaod</button>
+											<button type="submit" class="btn btn-light">Cancel</button>
+										</div>
+									</div>
+								</form>
+								
+                            </div>
+							<div class="row">
+								<div class="col-xl-12 col-xxl-12 col-sm-12">
+									<div class="card">
+										<div class="card-header">
+											<h4 class="card-title">MY UPLOADED DOCUMENT</h4>
+										</div>                                    
+										<div class="card-body">
+											<div class="table-responsive">
+												<table id="example4" class="display" style="min-width: 845px; padding: 10px;">
+													  
+			
+													<thead>
+														<tr>
+															<th>Tutor Name</th>
+															<th>Date</th>
+															<th>File</th>
+															<th>Action</th>
+														</tr>
+													</thead>
+													{{upload_content_student}}
+													{% for i in upload_content_student %}
+													<tbody>
+													   
+														<tr>
+															<td>{{i.tutor.fnamme}}</td>
+															<td>{{i.date}}</td>
+															<td><a href="{{i.filename.url}}">{{i.filename}}</a></td>
+															<td>
+																<a href="#" class="btn btn-sm btn-danger"><i class="la la-trash-o"></i></a>
+															</td>
+														</tr>
+													   
+													</tbody>
+													{% endfor %}
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+                        </div>
+                    </div>
+				</div>
+            </div>
+        </div>
+        <!--************
+            Content body end
+        *************-->
+
+</body>
+</html>
+{% endblock %}

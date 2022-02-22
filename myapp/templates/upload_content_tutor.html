@@ -1,0 +1,118 @@
+{% extends 'tutor_header.html'%}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<div class="content-body" style="">
+    <!-- background-image:url({% static 'images/book2.jpg' %}); background-repate:no-repeat; background-size:cover; -->
+            <!-- row -->
+            <div class="container-fluid">
+				    
+                <div class="row page-titles mx-0">
+                    <div class="col-sm-6 p-md-0">
+                        <div class="welcome-text">
+                            <h4>Upload Content</h4>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active"><a href="#">Upload Content</a></li>
+                            
+                        </ol>
+                    </div>
+                </div>
+				<div class="row">
+					<div class="col-xl-12 col-xxl-12 col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+								<h5 class="card-title">Basic Info</h5>
+							</div>
+							<div class="card-body">
+								{% if msg %}
+									{{msg}}
+								{% endif %}
+                                <form name="upload_content_tutor" method="post" action="{% url 'upload_content_tutor' %}" enctype="multipart/form-data">
+									{% csrf_token %}
+									<div class="row">
+										<div class="col-lg-6 col-md-6 col-sm-12">
+											<div class="form-group">
+												<label class="form-label">Upload Content</label>
+												<input type="file" class="form-control" name="filename">
+											</div>
+                                            <div class="form-group">
+												<label class="form-label">Batch Number</label>
+												<select name="bnum">
+                                                    {% for i in add_batch %}
+                                                    <option value="{{i.bnum}}">{{i.bnum}}</option>
+                                                    {% endfor %}
+                                                </select>											</div>
+                                            <div class="form-group">
+												<label class="form-label">Tutor Name</label>
+												<input type="text" class="form-control" name="fname" value="{{request.session.fname}}">
+											</div>
+										</div>
+										<div class="col-lg-12 col-md-12 col-sm-12">
+											<button type="submit" class="btn btn-primary" name="submit" value="edit">Uplaod</button>
+											<button type="submit" class="btn btn-light">Cancel</button>
+										</div>
+									</div>
+								</form>
+								
+                            </div>
+                        </div>
+                    </div>
+				</div>
+				<div class="row">
+					<div class="col-xl-12 col-xxl-12 col-sm-12">
+                        <div class="card">
+							<div class="card-header">
+								<h4 class="card-title">MY UPLOADED DOCUMENT</h4>
+							</div>                                    
+							<div class="card-body">
+								<div class="table-responsive">
+									<table id="example4" class="display" style="min-width: 845px; padding: 10px;">
+										  
+
+										<thead>
+											<tr>
+												<th>Batch Number</th>
+												<th>Tutor Name</th>
+												<th>File</th>
+												<th>Action</th>
+											</tr>
+										</thead>
+										{% for i in upload_content_tutor %}
+										<tbody>
+										   
+											<tr>
+												<td>{{i.bnum}}</td>
+												<td>{{i.tutor.fname}}</td>
+												<!-- <td>{{i.bdate}}</td> -->
+												<td><a href="{{i.filename.url}}">{{i.filename}}</a></td>
+												<td>
+													<a href="#" class="btn btn-sm btn-danger"><i class="la la-trash-o"></i></a>
+												</td>
+											</tr>
+										   
+										</tbody>
+										{% endfor %}
+									</table>
+								</div>
+							</div>
+						</div>
+                    </div>
+				</div>
+            </div>
+        </div>
+        <!--************
+            Content body end
+        *************-->
+
+</body>
+</html>
+{% endblock %}

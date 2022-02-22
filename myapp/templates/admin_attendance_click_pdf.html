@@ -1,0 +1,83 @@
+{% extends 'admin_header.html'%}
+{% block content%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tutor-Town</title>
+</head>
+<body>
+    <div class="content-body">
+        <!-- row -->
+        <div class="container-fluid">
+        
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card" style="margin-left: 239px; ">
+                        <div class="card-header">
+                            <h4 class="card-title" style="font-size:40px">ATTENDANCE REPORT </h4>
+                        </div>
+                        <form method="post" action="{% url 'admin_attendance_click' %}">
+                            {% csrf_token %}
+                            <select name="filter_name">
+                                <option>---Select Filter---</option>
+                                <option value="all">All</option>
+                                <option value="paresent">Present</option>
+                                <option value="absent">Absent</option>
+                                <option value="date">Date</option>
+                                <option value="month">Month</option>
+                             </select>
+                            <input type="text"  name="search">
+                           
+                            <input type="submit" name="action" value="search">
+                            
+                             <input type="submit" name="action" value="export"/>
+
+                        </form>
+                        <form method="post" action="#">
+                            {% csrf_token %}
+                            <a href="#"> <input type="submit" name="action" value="Export Pdf" style="float: right;margin-right: 148px; width: 100px;">
+                            </a>
+                        </form>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-sm mb-0 table-striped">
+                                    <thead >
+                                        <tr>
+                                            <th class="py-3" style="font-size: 15px;">STU ID</th>
+                                            <th class="py-3" style="font-size: 15px;">STU NAME</th>
+                                            <th class="py-3" style="font-size: 15px;">DATE</th>
+                                            <th class="py-3" style="font-size: 15px;">TIME</th>
+                                            <th class="py-3" style="font-size: 15px;">SUBJECT</th> 
+                                            <th class="py-3" style="font-size: 15px;">ACTION</th> 
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for i in attendance  %}
+                                        <tr>
+                                            <td class="py-3">{{i.student.pk}}</td>
+                                            <td class="py-3">{{i.student.fname}} {{i.student.lname}} </td>
+                                            <td class="py-3">{{i.datetime}}</td>
+                                            <td class="py-3">{{i.add_batch.btime}}</td>
+                                            <td class="py-3">{{i.add_batch.bsubject}}</td>
+                                            {% if i.astatus == "Present" %}
+                                                <td ><a href="#"><input type="submit"  class="btn btn-primary " style=" background-color:  #095206fd; border-radius: 45px 42px; margin-left: 100px;" value="{{i.astatus}}"></a></td>
+                                               
+                                            {% else %}
+                                                <td ><input type="submit"  class="btn btn-primary " style="background-color:  #bd0c0cfd; border-radius: 45px 42px; margin-left: 100px;" value="{{i.astatus}}"></td>
+                                                
+                                            {% endif %}
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+{% endblock %}

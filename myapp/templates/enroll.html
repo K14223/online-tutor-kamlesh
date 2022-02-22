@@ -1,0 +1,117 @@
+{% extends 'student_header.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table {
+          border-style: none;
+          font-size: larger;
+        } 
+        
+       
+        
+        table.a {
+          table-layout: auto;
+          width: 700px;  
+        }
+        
+        table.b {
+          table-layout: fixed;
+          width: 180px;  
+        }
+        
+        table.c {
+          table-layout: auto;
+          width: 100%;  
+        }
+        
+        table.d {
+          table-layout: fixed;
+          width: 100%;  
+        }
+        </style>
+</head>
+<body>   
+   
+    </head>
+    <body>
+    
+        {{msg}}
+   <form  method="POST" name="myForm" id="myForm" action="{% url 'enroll_student' %}">
+     {% csrf_token %} 
+    <table  style="margin-left: 400px;margin-top: 50px; height: 700px; width: 1000px; background-color:white; border: none;">
+      <tr>
+          <td colspan="3">
+            <h1 style="text-align: center;">The table-layout Property</h1>
+          </td>
+        </tr>
+      <tr>
+        
+        <td rowspan="{{ total }}">
+            <div class="card" style="width:300px; height:350px;">
+                <img class="card-img-top" src="{{tutor_detail.tutor.user_image.url}}" alt="Card image" width=300px height=350px>
+            </div>
+        </td>
+      </tr>
+      
+      <tr>
+        <td colspan="2" style="font-weight: bold; font-size: larger;">
+            select Your course
+        </td>
+        
+      </tr>
+      {% for i in sd %}
+      <tr>
+        
+        <td colspan="2">
+           <input type="checkbox" name="subject" value="{{i}}"> {{i}}
+        </td>
+        
+      </tr>
+      {% endfor %}
+      
+      
+      
+      
+      
+      <tr>
+        <td><p class="card-title">Tutor Name  :{{tutor_detail.tname}} </p></td>
+        <td><p class="card-title">Class Name :{{tutor_detail.cname}} </p></td>
+        <td><p class="card-title" style="width: 275px;">Subject  :{{tutor_detail.subject_details}} </p></td>
+      </tr>
+      <tr>
+        <td><p class="card-title">Contact  :{{tutor_detail.tutor.mobile}} </p></p></td>
+        <td><p class="card-title">Email Id :{{tutor_detail.tutor.email}} </p></td>
+        <td><p class="card-title">Qualifictaion Details  :{{tutor_detail.qualification_details}} </p></td>
+      </tr>
+      <tr>
+        <td><p class="card-title">Experience :{{tutor_detail.extra_details}} </p></td>
+        <td><p class="card-title">Address :{{tutor_detail.address}} </p></td>
+        <td><p class="card-title"><b>Select Your Course</b></p></td>
+      </tr>
+      <tr>
+        <td><p class="card-title"><input type="text"  value="{{tutor_detail.tutor.pk}}" name="tutor_id"> </p></td>Tutor Id
+        <td><p class="card-title"><input type="text" value="{{request.session.tid}}" name="student_id"></p></td>Student Id
+        <td><p class="card-title"><b></b></p></td>
+      </tr>
+      <tr>
+        <td colspan="2" style="text-align: center;">
+            <input type="submit" value="Send Request" class="btn btn-outline-primary btn-rounded">
+        </td>
+      </tr>
+    </table>
+  </form>
+  <script src="{% static 'bvalidator/jquery.bvalidator.min.js' %}"></script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+        // alert("called")
+        $('#subject').bValidator();
+
+    });
+</script>
+</body>
+</html>
+{% endblock %}

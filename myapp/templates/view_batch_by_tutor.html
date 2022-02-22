@@ -1,0 +1,128 @@
+{% extends 'tutor_header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+    <style type="text/css">
+        table {
+  border-collapse: separate;
+  border-spacing:10px;
+    }
+    </style>
+</head>
+
+<body>
+	<div>
+
+				<div class="content-body">
+                    <!-- row -->
+                    <div class="container-fluid">
+                        
+                        <div class="row page-titles mx-0">
+                            <div class="col-sm-6 p-md-0">
+                                <div class="welcome-text">
+                                    <h4>All Batch List</h4>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
+                                    <li class="breadcrumb-item active"><a href="javascript:void(0);">Attendance</a></li>
+                                </ol>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">My Batch</h4>
+                                    </div>
+                                    <!-- <div class="alert alert-info" role="alert">
+                                        {{msg}}
+                                    </div> -->
+                                    
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table id="example4" class="display" style="min-width: 845px; padding: 10px;">
+                                                  
+
+                                                <thead>
+                                                    <tr>
+                                                        <th>Batch Number</th>
+                                                        <th>Batch Name</th>
+                                                        <th>Date</th>
+                                                        <th>Time </th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                {% for i in add_batchs %}
+                                                <tbody>
+                                                   
+                                                    <tr>
+                                                        <td>{{i.bnum}}</td>
+                                                        <td>{{i.bname}}</td>
+                                                        <td>{{i.bdate}}</td>
+                                                        <td>{{i.btime}}</td>
+                                                        <td>
+															<a href="{% url 'all_student_in_my_batch' pk=i.bnum %}" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>
+															<a href="{% url 'delete_batch' pk=i.pk %}" class="btn btn-sm btn-danger"><i class="la la-trash-o"></i></a>
+														</td>
+                                                    </tr>
+                                                   
+                                                </tbody>
+                                                {% endfor %}
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        </div>
+		<!--**********************************
+            Content body end
+        ***********************************-->
+
+
+		<!--**********************************
+            Footer start
+        ***********************************-->
+		
+		<!--**********************************
+            Footer end
+        ***********************************-->
+
+		<!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+		<!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+
+	</div>
+	<!-- <script src="{% static 'vendor/global/global.min.js' %}"></script>
+	<script src="{% static 'vendor/bootstrap-select/dist/js/bootstrap-select.min.js' %}"></script>
+	<script src="{% static 'js/custom.min.js' %}"></script>
+	<script src="{% static 'js/dlabnav-init.js' %}"></script> -->
+
+	<!-- Datatable -->
+	<!-- <script src="{% static 'vendor/datatables/js/jquery.dataTables.min.js' %}"></script>
+	<script src="{% static 'js/plugins-init/datatables.init.js' %}"></script> -->
+
+	<!-- Svganimation scripts -->
+	<!-- <script src="{% static 'vendor/svganimation/vivus.min.js' %}"></script>
+    <script src="{% static 'vendor/svganimation/svg.animation.js' %}"></script>
+    <script src="{% static 'js/styleSwitcher.js' %}"></script> -->
+
+	<script>
+		$(document).ready(function () {
+			console.log("ready!");
+		});
+	</script>
+</body>
+
+</html>
+{% endblock %}

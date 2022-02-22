@@ -1,0 +1,173 @@
+{% extends 'header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+    crossorigin="anonymous"></script>
+    <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRZkPkgZVuMQYFcqrB750dgo7Kn7bjBcbJIQ&amp;usqp=CAU" type="image/x-icon">
+    <link rel="stylesheet" href="{% static 'tutorial.css' % }">
+  <title>Tutorial Point</title>
+</head>
+<body>
+    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="10000">
+        <img src="{% static 'New folder/tutor1.png' %}" class="d-block w-100 " height="500" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <!-- <h5>First slide label</h5>
+          <p>Some representative placeholder content for the first slide.</p> -->
+        </div>
+      </div>
+      <div class="carousel-item" data-bs-interval="2000">
+        <img src="{% static 'image/img2-min.jpg' %}" class="d-block w-100" height="500" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <!-- <h5>Second slide label</h5>
+          <p>Some representative placeholder content for the second slide.</p> -->
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'image/img1-min.jpg' %}" class="d-block w-100" height="500" alt="...">
+        <div class="carousel-caption d-none d-md-block">
+          <!-- <h5>Third slide label</h5>
+          <p>Some representative placeholder content for the third slide.</p> -->
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark"  data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark"  data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  
+  <div class="container">
+  <div class="row featurettemt-2 mt-5">
+    <div class="col-md-7">
+      <h2 class="featurette-heading" style="font-family:fantasy; font-size: 58px;">Tutor-Town <br> <span class="text-muted">It’ll blow your mind.</span></h2>
+      <p class="lead" style="font-family: monospace; font-size: 32px">Head yourself to the Best Tutor...</p>
+        <p class="lead" style="font-family: monospace; font-size: 20px" >You know who you're looking for.</p>
+           <p style="font-family: monospace; font-size: 20px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-----&nbsp;&nbsp;We'll help you find them.
+            </p>
+    </div>
+    <div class="col-md-5">
+      <img src="{% static 'New folder/extra.png' %}" width="100%" height="100%" alt=""> 
+    </div>
+    </div>
+    <div class="row featurette mt-5">
+        <div class="col-md-7 order-md-2">
+          <h2 class="featurette-heading" style="text-align: center;">Let's make your next great hire!! Fast...
+          <h2 class="featurette-heading" style="text-align: center;"><span class="text-muted">See for yourself.</span></h2>
+          <p class="lead" style="font-family: cursive; font-size: 26px"></p>
+            <p style="font-family: cursive; font-size: 20px">An online platform with the benefits for Tutors, Students and Parents to get the 
+              students and teachers/tutors easily. ​<br/>The tutor can get the students just by logging into the system and by setting up their
+              profile.<br/>The student will search the tutor according to his requirement and will send the request to join with the specific
+              standard along with the specific subject. ​</p>
+        </div>
+        <div class="col-md-5 order-md-1">
+         <img src="{% static 'New folder/tutoring1.jpg' %}" width="100%" height="" alt=""> 
+        </div>
+      </div>
+  </div>
+  <div class="container">
+    <section id="service">
+        <div class="container">
+            <div class="container-section">
+                <div class="service-main">
+                    <div class="service">
+                        <h3 style="font-family: fantasy; font-size: 42px;">SERVICE</h3>
+                        <div class="mainbox">
+                            <div class="box1">
+
+                                <img src="{% static 'New folder/primary-gif.gif' %}" height="" alt="">
+                            </div>
+                            <div class="box1">
+                                <img src="{% static 'New folder/sec-gif.gif' %}" height="" alt="" class="img2">
+                            </div>
+                            <div class="box1">
+                                <img src="{% static 'New folder/coder2-gif.gif' %}" height="" alt="" class="img2">
+                            </div>
+                            <div class="box1">
+
+                                <img src="{% static 'New folder/coder1-gif.gif' %}" height="" alt="" class="img3">
+                            </div>
+                            <div class="box1">
+                                <img src="{% static 'New folder/coll-gif.jpg' %}" height="" alt="">
+
+                            </div>
+                            <div class="box1">
+                                <img src="https://cdn.videoplasty.com/gif/atoms-flat-icon-stock-gif-3379-1280x720.gif?1573981396" height="" alt="" class="img4">
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+  <div class="container">
+       <div class="div-qustion mt-5" style="width: 100%;">
+        <h1 style="text-align: center;">Frequently Asked Questions:</h1>
+          <div class="div-box-1" style="width: 100%;  padding:10px;" >
+            <h3>⭐What are the benefits of taking tuition classes?</h3>
+            <p>Tuition classes provide several benefits to students. Some of them include: <br>
+              <ul style="list-style: none;">
+                <li>Personalised attention.</li>
+                <li>Customised study methods.</li>
+                <li>Increased confidence.</li>
+                <li>Help with homework, class test etc.</li>
+                <li>Exam strategies and techniques.</li>
+              </ul>
+          </div>
+          <div class="div-box-1" style="width: 100%;  padding:10px;" >
+            <h3>⭐Why are tuitions important for students?</h3>
+            Competition amongst students is sky-high these days. Besides classroom learning, students often need a new studying style, in-depth 
+            explanations etc. from tuition classes in order to stay on top.
+          </div>
+          <div class="div-box-1" style="width: 100%;  padding:10px;" >
+            <h3>⭐Which is the best online tuition centre in India?</h3>
+            There are plenty of institutes and tuition centres to choose from, especially when it comes to online tuition classes 
+            as we're living in the Internet era. You can scan through the reviews and ratings of different tuition centres and tutors available with 
+            Tutor Town to find the best one for yourself.
+          </div>
+          <div class="div-box-1" style="width: 100%;  padding:10px;" >
+            <h3>⭐What is the average online tuition fee charged by tutors in India?</h3>
+           <p>The tuition fee for online tutors varies as several factors are considered while setting the tuition fee such as tutors' experience & qualification, the number of live sessions, subjects to be covered etc.
+            However, you can find the estimated tuition fee with UrbanPro's tuition fee calculator.</p>
+          </div>
+          <div class="div-box-1" style="width: 100%;   padding:10px;" >
+            <h3>⭐⭐Advantages of online tuition:⭐⭐</h3>
+           <p>Online tuition classes are preferably easier than the traditional method of coaching.It has become the first chosen option for both students and tutor due to various reasons.</p>
+           <ul>
+             <li><h4>Let us look at the benefits of taking online classes below :</h4></li>
+             <li>Flexible and convenient to attend classes as you only need an internet connection and a laptop/tablet/phone</li>
+             <li>Networking opportunities with students from other cities/school</li>
+             <li>Save documents - In online classes, you get the option to save and replay the sessions. So, you can go back and replay if you have missed any important point.</li>
+             <li>You get the chance to connect with experts from other cities which is not possible in a local institution.</li>
+           </ul>
+          </div>
+       </div>
+  </div>
+</section>
+<footer class=" mt-5 bg-dark py-3">
+    <p class="float-right"><a href="#">Back to top</a></p>
+    <!-- <p>© 2017-2018 Company, Inc. · <a href="#">Privacy</a> · <a href="#">Terms</a></p> -->
+  </footer>
+</body>
+{% endblock %}

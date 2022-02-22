@@ -1,0 +1,134 @@
+{% extends 'parent_header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+</head>
+
+<body>
+	<div>
+		<div class="content-body">
+			<!-- row -->
+			<div class="container-fluid">
+
+				<div class="row page-titles mx-0">
+					<div class="col-sm-6 p-md-0">
+						<div class="welcome-text">
+							<h4>All Tutors</h4>
+						</div>
+					</div>
+					<!-- <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index-2.html">Home</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);"></a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);">All Professors</a></li>
+                        </ol>
+                    </div> -->
+				</div>
+
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="row tab-content">
+							<div id="grid-view" class="tab-pane fade col-lg-12 active show">
+								<div class="row">
+									
+									{% for i in tutor_list %}
+									<div class="col-lg-4 col-md-6 col-sm-6 col-12">
+										<div class="card card-profile">
+											<div class="card-header justify-content-end pb-0">
+												<div class="dropdown">
+													<div class="dropdown-menu dropdown-menu-right border py-0">
+														<div class="py-2">
+															<a class="dropdown-item" href="javascript:void(0);">Edit</a>
+															<a class="dropdown-item text-danger"
+																href="javascript:void(0);">Delete</a>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="card-body pt-2">
+												<div class="text-center">
+													<div class="profile-photo">
+														<img src="{{i.tutor.user_image.url}}" width="200px" height="200px"
+															class="img-fluid rounded-circle" alt="test">
+													</div>
+													<h3 class="mt-4 mb-1">Name :{{i.tutor.fname}} {{i.tutor.lname}}</h3>
+													<ul class="list-group mb-3 list-group-flush">
+														<li class="list-group-item px-0 d-flex justify-content-between">
+															<span class="mb-0">Class Name :</span><strong>{{i.cname}}</strong>
+														</li>
+														<li class="list-group-item px-0 d-flex justify-content-between">
+															<span
+																class="mb-0">Subject:</span><strong>{{i.subject_details}}</strong>
+														</li>
+													</ul>
+													<a class="btn btn-outline-primary btn-rounded mt-3 px-4"
+														href="{% url 'parent_view_tutor_details' pk=i.tutor.pk %}">More Details</a>
+												</div>
+											</div>
+										</div>
+									</div>
+									{% endfor %}
+									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+		<!--**********************************
+            Content body end
+        ***********************************-->
+
+
+		<!--**********************************
+            Footer start
+        ***********************************-->
+		<div class="footer">
+			<div class="copyright">
+				<p>Copyright © Designed &amp; Developed by <a href="http://dexignlab.com/" target="_blank">DexignLab</a>
+					2020</p>
+			</div>
+		</div>
+		<!--**********************************
+            Footer end
+        ***********************************-->
+
+		<!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+		<!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+
+	</div>
+	<script src="{% static 'vendor/global/global.min.js' %}"></script>
+	<script src="{% static 'vendor/bootstrap-select/dist/js/bootstrap-select.min.js' %}"></script>
+	<script src="{% static 'js/custom.min.js' %}"></script>
+	<script src="{% static 'js/dlabnav-init.js' %}"></script>
+
+	<!-- Datatable -->
+	<script src="{% static 'vendor/datatables/js/jquery.dataTables.min.js' %}"></script>
+	<script src="{% static 'js/plugins-init/datatables.init.js' %}"></script>
+
+	<!-- Svganimation scripts -->
+	<!-- <script src="{% static 'vendor/svganimation/vivus.min.js' %}"></script>
+    <script src="{% static 'vendor/svganimation/svg.animation.js' %}"></script>
+    <script src="{% static 'js/styleSwitcher.js' %}"></script> -->
+
+	<script>
+		$(document).ready(function () {
+			console.log("ready!");
+		});
+	</script>
+</body>
+
+</html>
+{% endblock %}

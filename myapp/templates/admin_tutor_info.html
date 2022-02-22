@@ -1,0 +1,111 @@
+{% extends 'admin_header.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+    <style type="text/css">
+        table {
+  border-collapse: separate;
+  border-spacing:10px;
+    }
+    </style>
+</head>
+
+<body>
+	<div>
+
+				<div class="content-body">
+                    <!-- row -->
+                    <div class="container-fluid">
+                        
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="card" style="margin-left: 249px; margin-top: -22px;}">
+                                    <div class="card-header">
+                                        <h4 class="card-title">TUTOR'S BATCH</h4>
+                                    </div>
+                                    {{msg}}
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table id="example4" class="display" style="min-width: 845px; padding: 10px;">
+                                                  
+
+                                                <thead>
+                                                    <tr>
+                                                        <th>TUTOR ID</th>
+                                                        <th>FIRST NAME</th>
+                                                        <th>LAST NAME</th>
+                                                        <th>TUTOR SUBJECT</th>
+                                                        <th>BATCH</th>
+                                                        <th>TOTAL STUDENT</th>
+                                                        
+                                                        <th>ACTION</th>
+                                                    </tr>
+                                                </thead>
+                                               {% for i in add_batch %}
+                                                <tbody>
+                                                    
+                                                    <tr>
+                                                        <td>{{tutor_detail.id}}</td>
+                                                        <td> {{tutor_detail.tutor.fname}}</td>
+                                                        <td>{{tutor_detail.tutor.lname}}</a></td>
+                                                        <td>{{i.bsubject}}</td>
+                                                        <td><a href="{% url 'admin_batch_info' bnum=i.bnum %}">{{i.bnum}}</a></td>
+                                                        <td>{{tutor_detail.tutor.mobile}}</td>
+                                                        <td>
+															<a href="#" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+															<a href="#" class="btn btn-sm btn-danger"><i class="fa fa-trash-o"></i></a>
+														</td>
+                                                    </tr>
+                                                   
+                                                </tbody>
+                                                {% endfor %}
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        </div>
+		<!--**********************************
+            Content body end
+        ***********************************-->
+
+
+		<!--**********************************
+            Footer start
+        ***********************************-->
+		
+		<!--**********************************
+            Footer end
+        ***********************************-->
+
+		<!--**********************************
+           Support ticket button start
+        ***********************************-->
+
+		<!--**********************************
+           Support ticket button end
+        ***********************************-->
+
+
+	</div>
+	<!-- <script src="{% static 'vendor/global/global.min.js' %}"></script>
+	<script src="{% static 'vendor/bootstrap-select/dist/js/bootstrap-select.min.js' %}"></script>
+	<script src="{% static 'js/custom.min.js' %}"></script>
+	<script src="{% static 'js/dlabnav-init.js' %}"></script> -->
+
+	<!-- Datatable -->
+	<!-- <script src="{% static 'vendor/datatables/js/jquery.dataTables.min.js' %}"></script>
+	<script src="{% static 'js/plugins-init/datatables.init.js' %}"></script> -->
+
+	<!-- Svganimation scripts -->
+	<!-- <script src="{% static 'vendor/svganimation/vivus.min.js' %}"></script>
+    <script src="{% static 'vendor/svganimation/svg.animation.js' %}"></script>
+    <script src="{% static 'js/styleSwitcher.js' %}"></script> -->
+</body>
+
+</html>
+{% endblock %}
